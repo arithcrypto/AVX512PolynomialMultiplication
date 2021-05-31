@@ -15,6 +15,7 @@ grep vpclmulqdq /proc/cpuinfo
 ``` 
 to see if this feature is available.
 * the gf2x library (version >= 1.2) installed on your system.
+* gcc version 10.2.0
 
 **How to run ?**
 
