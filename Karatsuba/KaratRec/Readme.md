@@ -26,7 +26,7 @@ make bench
 
 to get the performances of all the above multiplications for degrees : 1023, 2047, 4095, 16383, 32767, 65535 and 131071.
 
-or run :
+Or run :
 
 ```console
 make METHOD=1 bench
