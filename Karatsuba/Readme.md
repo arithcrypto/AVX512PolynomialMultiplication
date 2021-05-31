@@ -1,23 +1,18 @@
-This repository contains AVX512 implementations using the **VPCLMULQDQ** instruction for the 
-* schoolbook multiplication in <img src="https://render.githubusercontent.com/render/math?math=\mathbb F_{2}[X]/(X^n-1)" valign="middle"> of polynomials of degree up to 131071.
+This folder contains AVX512 implementations using the **VPCLMULQDQ** instruction for the 
+multiplication in <img src="https://render.githubusercontent.com/render/math?math=\mathbb F_{2}[X]/(X^n-1)" valign="middle"> of polynomials of degree up to 131071.
 
-The folder KaratRec contains the following files:
-* SB256.c : source code of the schoolbook multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, Recursive Karatsuba is used.
-* Karat256.c : source code of the Karatsuba multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, Recursive Karatsuba is used.
-* DGK.c : source code of the multiplication of polynomials of degree up to 255 described in *"N. Drucker, S. Gueron, V. Krasnov, Fast Multiplication of binary polynomials with the forthcoming vectorized vpclmulqdq instruction, ARITH'25, 2018"*. 
-* AVX2.c : source code of the schoolbook multiplication of polynomials of degree up to 127 using AVX2 instruction set. For degree > 255, Recursive Karatsuba is used.
-* KaratRec.c : main program to measure the performances of the above multiplications.
+The folder KaratRec contains the source code of the multiplication of polynomials of degree up to 255 using AVX512 instruction set or AVX2 instruction set for schoolbook and Karatsuba methods.  For degree > 255, Classical recursive Karatsuba is used.
 
-**Prerequisites**
+The folder Karat3KaratRec contains the source code of the **schoolbook** multiplication of polynomials of degree up to 255 using AVX512 instruction set or AVX2 instruction set.  For degree > 255, a 3-way split is used and a recursive call to classical Karatsuba is done. 
 
-To run the tests you must have :
-* an AVX512 processor with the VPCLMULQDQ instruction. From a shell, just run :
-```console
-grep vpclmulqdq /proc/cpuinfo
-``` 
-to see if this feature is available.
-* the gf2x library (version >= 1.2) installed on your system.
+The folder Karat5KaratRec contains the source code of the **schoolbook** multiplication of polynomials of degree up to 255 using AVX512 instruction set or AVX2 instruction set.  For degree > 255, a 5-way split is used and a recursive call to classical Karatsuba is done. 
 
-**How to run ?**
 
+The folder Karat3Karat5KaratRec contains the source code of the multiplication of polynomials of degree 7607 to 122879 using AVX512 instruction set or AVX2 instruction set. First a 3-way split is applied, than the elementary multiplications of the Karatsuba algorithm are done using the 5-way split Karatsuba algorithm.
+
+The folder Karat5Karat3KaratRec contains the source code of the multiplication of polynomials of degree 7607 to 122879 using AVX512 instruction set or AVX2 instruction set. First a 5-way split is applied, than the elementary multiplications of the Karatsuba algorithm are done using the 3-way split Karatsuba algorithm.
+
+The folder Karat3Karat3KaratRec contains the source code of the multiplication of polynomials of degree 4607 to 73727 using AVX512 instruction set or AVX2 instruction set. First a 3-way split is applied, than the elementary multiplications of the Karatsuba algorithm are done using the 3-way split Karatsuba algorithm.
+
+The folder Karat5Karat5KaratRec contains the source code of the multiplication of polynomials of degree 12799 to 102399 using AVX512 instruction set or AVX2 instruction set. First a 5-way split is applied, than the elementary multiplications of the Karatsuba algorithm are done using the 5-way split Karatsuba algorithm.
 
