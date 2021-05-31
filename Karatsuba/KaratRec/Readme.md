@@ -30,6 +30,7 @@ Or run :
 
 ```console
 make METHOD=1 bench
+./KaratRec
 ```
 where METHOD is either **SB256**, **KARAT256**, **DGK**, or **AVX2** to get the performances of the selected method.
  

@@ -1,0 +1,284 @@
+for size in 512 1024 2048 4096 8192 16384 32768 ; do \
+	make -B TEST=1 SIZE=$size ; \
+	./Karat3 ; \
+done
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=512
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=512
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=512
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 1536
+SIZE_N = 1536, t = 24, t/(256/WORD) =6
+24
+SIZE_N_64 = 24, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 1536
+		 Size =1536 bits
+
+t = 24, t/(256/WORD) =6, 
+SIZE_N = 1536,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 904
+timer karat_mult3        : 440
+timer karat_mult3_AVX512 : 450
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=1024
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=1024
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=1024
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 3072
+SIZE_N = 3072, t = 48, t/(256/WORD) =12
+48
+SIZE_N_64 = 48, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 3072
+		 Size =3072 bits
+
+t = 48, t/(256/WORD) =12, 
+SIZE_N = 3072,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 2486
+timer karat_mult3        : 1272
+timer karat_mult3_AVX512 : 1131
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=2048
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=2048
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=2048
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 6144
+SIZE_N = 6144, t = 96, t/(256/WORD) =24
+96
+SIZE_N_64 = 96, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 6144
+		 Size =6144 bits
+
+t = 96, t/(256/WORD) =24, 
+SIZE_N = 6144,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 6104
+timer karat_mult3        : 3974
+timer karat_mult3_AVX512 : 3433
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=4096
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=4096
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=4096
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 12288
+SIZE_N = 12288, t = 192, t/(256/WORD) =48
+192
+SIZE_N_64 = 192, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 12288
+		 Size =12288 bits
+
+t = 192, t/(256/WORD) =48, 
+SIZE_N = 12288,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 18463
+timer karat_mult3        : 11998
+timer karat_mult3_AVX512 : 10340
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=8192
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=8192
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=8192
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 24576
+SIZE_N = 24576, t = 384, t/(256/WORD) =96
+384
+SIZE_N_64 = 384, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 24576
+		 Size =24576 bits
+
+t = 384, t/(256/WORD) =96, 
+SIZE_N = 24576,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 50311
+timer karat_mult3        : 37024
+timer karat_mult3_AVX512 : 31535
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=16384
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=16384
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=16384
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 49152
+SIZE_N = 49152, t = 768, t/(256/WORD) =192
+768
+SIZE_N_64 = 768, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 49152
+		 Size =49152 bits
+
+t = 768, t/(256/WORD) =192, 
+SIZE_N = 49152,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 150649
+timer karat_mult3        : 117707
+timer karat_mult3_AVX512 : 97380
+
+Thanks, bye!
+
+make[1] : on entre dans le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+gcc -c fonctions.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=32768
+gcc -c Karat3.c -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=32768
+gcc -o Karat3 Karat3.o fonctions.o -O3 -g -march=icelake-client -lm -lgf2x -DTEST -DT_3W=32768
+make[1] : on quitte le répertoire « /home/pascal/Téléchargements/Karat3KaratRec »
+SIZE_N = 98304
+SIZE_N = 98304, t = 1536, t/(256/WORD) =384
+1536
+SIZE_N_64 = 1536, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karat_mult3_AVX512: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 98304
+		 Size =98304 bits
+
+t = 1536, t/(256/WORD) =384, 
+SIZE_N = 98304,  
+
+gf2x_mul vs Karat3
+-------------------------
+timer gf2x_mul           : 427281
+timer karat_mult3        : 357577
+timer karat_mult3_AVX512 : 294722
+
+Thanks, bye!
+
