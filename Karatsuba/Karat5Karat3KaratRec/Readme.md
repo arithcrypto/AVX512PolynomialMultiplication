@@ -1,8 +1,8 @@
 The folder Karat5Karat3KaratRec contains the following files:
 
-* **gf2xmul_AVX2.c** : AVX2 source code of the 5-way split  then 3-way split of Karatsuba algorithm. Final multiplication is done using 
+* **gf2xmul_AVX2.c** : AVX2 source code of the 5-way split + 3-way split of Karatsuba algorithm. Final multiplication is done using 
 the **_mm_clmulepi64_si128**  instruction.
-* **gf2xmul_AVX512.c** : AVX512 source code of the 5-way split then 3-way split of Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
+* **gf2xmul_AVX512.c** : AVX512 source code of the 5-way split + 3-way split of Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
 * **Karat5_3.c** : main program to measure the performances of the above multiplications.
 
 **Prerequisites**
@@ -19,9 +19,9 @@ to see if this feature is available
 
 **How to run ?**
 
-First configure the msr-tools and disable the turbo-boost feature. As root, run:
+First configure the msr-tools and disable the turbo-boost feature. In a shell, run:
 ```console
-bash measure.sh
+sudo bash measure.sh
 ```
 
 Next as a normal user, run :
@@ -30,13 +30,13 @@ Next as a normal user, run :
 make bench
 ```
 
-to get the performances of all the above multiplications for degrees : 2559, 5119, 10239, 20479, 40959, 81919.
+to get the performances of all the above multiplications for degrees : 7679, 15359, 30719, 61439, 122879.
 
 Or run :
 
 ```console
-make TEST=1 SIZE=size bench
+make TEST=1 SIZE=size
 ./Karat5_3
 ```
-where *size* is one of the size above mentioned to get the performances for the selected size.
+with *size=(degree+1)/15*, where *degree* is one of the degrees above mentioned to get the performances for the selected degree.
  

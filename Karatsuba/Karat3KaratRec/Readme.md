@@ -19,9 +19,9 @@ to see if this feature is available
 
 **How to run ?**
 
-First configure the msr-tools and disable the turbo-boost feature. As root, run:
+First configure the msr-tools and disable the turbo-boost feature. In a shell, run:
 ```console
-bash measure.sh
+sudo bash measure.sh
 ```
 
 Next as a normal user, run :
@@ -35,8 +35,8 @@ to get the performances of all the above multiplications for degrees : 1535, 307
 Or run :
 
 ```console
-make TEST=1 SIZE=size bench
+make TEST=1 SIZE=size
 ./Karat3
 ```
-where *size* is one of the size above mentioned to get the performances for the selected size.
+with *size=(degree+1)/3*, where *degree* is one of the degrees above mentioned to get the performances for the selected degree.
  
