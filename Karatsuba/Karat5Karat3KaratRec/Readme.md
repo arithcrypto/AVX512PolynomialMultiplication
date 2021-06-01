@@ -1,9 +1,9 @@
-The folder Karat5KaratRec contains the following files:
+The folder Karat5Karat3KaratRec contains the following files:
 
-* **gf2xmul_AVX2.c** : AVX2 source code of the 5-way split Karatsuba algorithm. Final multiplication is done using 
+* **gf2xmul_AVX2.c** : AVX2 source code of the 5-way split  then 3-way split of Karatsuba algorithm. Final multiplication is done using 
 the **_mm_clmulepi64_si128**  instruction.
-* **gf2xmul_AVX512.c** : AVX512 source code of the 5-way split Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
-* **Karat5.c** : main program to measure the performances of the above multiplications.
+* **gf2xmul_AVX512.c** : AVX512 source code of the 5-way split then 3-way split of Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
+* **Karat5_3.c** : main program to measure the performances of the above multiplications.
 
 **Prerequisites**
 
@@ -36,7 +36,7 @@ Or run :
 
 ```console
 make TEST=1 SIZE=size bench
-./Karat5
+./Karat5_3
 ```
 where *size* is one of the size above mentioned to get the performances for the selected size.
  

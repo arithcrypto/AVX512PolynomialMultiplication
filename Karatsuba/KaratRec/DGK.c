@@ -43,15 +43,15 @@ inline static void DGK_mult_256_256_512(__m512i * Out, const __m256i * A256, con
 {
 	/*
 		Instruction count:
-			- 2* _mm512_align_i64x4
-			- 6* _mm512_permutexvar_epi64
+			- 2* _mm256_align_i64x4
+			- 6* _mm256_permutexvar_epi64
 			- 8* clmulepi64_epi128
 			- 15* XOR
 	*/
 	__m256i A0, A1, B, zero ;
 	
 	A0 = _mm256_lddqu_si256(A256);
-	B = _mm256_lddqu_si256(B256);//*/
+	B = _mm256_lddqu_si256(B256);
 
 	__m256i OddSumLow, OddSumHigh, EvenSumLow, EvenSumHigh;
 	__m256i Even0, Even1, Even2, Even3;

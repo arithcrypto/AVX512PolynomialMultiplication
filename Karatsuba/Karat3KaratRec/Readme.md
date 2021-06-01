@@ -1,8 +1,8 @@
 The folder Karat3KaratRec contains the following files:
 
-* **gf2x.c** : AVX2 source code of the 3-way split Karatsuba algorithm. Final multiplication is done using 
+* **gf2xmul_AVX2.c** : AVX2 source code of the 3-way split Karatsuba algorithm. Final multiplication is done using 
 the **_mm_clmulepi64_si128**  instruction.
-* **gf2x_AVX512.c** : AVX512 source code of the 3-way split Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
+* **gf2xmul_AVX512.c** : AVX512 source code of the 3-way split Karatsuba algorithm. Final multiplication is done using the **_mm512_clmulepi64_epi128** instruction.
 * **Karat3.c** : main program to measure the performances of the above multiplications.
 
 **Prerequisites**

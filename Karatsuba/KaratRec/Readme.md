@@ -1,8 +1,8 @@
 The folder KaratRec contains the following files:
 
-* **SB256.c** : source code of the schoolbook multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, Recursive Karatsuba is used.
-* **Karat256.c** : source code of the Karatsuba multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, Recursive Karatsuba is used.
-* **DGK.c** : source code of the multiplication of polynomials of degree up to 255 described in *"N. Drucker, S. Gueron, V. Krasnov, Fast Multiplication of binary polynomials with the forthcoming vectorized vpclmulqdq instruction, ARITH'25, 2018"*. 
+* **SB256.c** : source code of the schoolbook multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, recursive Karatsuba is used.
+* **Karat256.c** : source code of the Karatsuba multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, recursive Karatsuba is used.
+* **DGK.c** : source code of the AVX512 multiplication of polynomials of degree up to 255 described in *"N. Drucker, S. Gueron, V. Krasnov, Fast Multiplication of binary polynomials with the forthcoming vectorized vpclmulqdq instruction, ARITH'25, 2018"*. For degree > 255, recursive Karatsuba is used.
 * **AVX2.c** : source code of the schoolbook multiplication of polynomials of degree up to 127 using AVX2 instruction set. For degree > 255, Recursive Karatsuba is used.
 * **KaratRec.c** : main program to measure the performances of the above multiplications.
 
