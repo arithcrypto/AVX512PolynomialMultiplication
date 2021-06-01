@@ -23,9 +23,9 @@ void printVect(unsigned long int *A, char *var, int size)
 	printf("\n");
 }
 
-#include "gf2x.c"
+#include "gf2xmul_AVX2.c"
 
-#include "gf2x_AVX512.c"
+#include "gf2xmul_AVX512.c"
 
 
 
