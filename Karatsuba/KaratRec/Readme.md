@@ -17,6 +17,7 @@ to see if this feature is available.
 * the gf2x library (version >= 1.2) 
 * gcc version 10.2.0
 * the msr-tools
+
 **How to run ?**
 
 First configure the msr-tools and disable the turbo-boost feature. As root, run:
