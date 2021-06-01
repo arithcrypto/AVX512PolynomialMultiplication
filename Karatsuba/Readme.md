@@ -1,6 +1,4 @@
-This folder contains AVX512 implementations using the **VPCLMULQDQ** instruction and AVX2 implementation using the **PCLMULQDQ** instruction for the 
-multiplication in <img src="https://render.githubusercontent.com/render/math?math=\mathbb F_{2}[X]/(X^n-1)" valign="middle"> of polynomials of degree up to 131071.
-
+## Description 
 #### KaratRec
 The folder KaratRec contains the source code of the multiplication of polynomials of degree up to 255 using AVX512 instruction set or AVX2 instruction set for **schoolbook and Karatsuba** methods.  For degree > 255, classical recursive Karatsuba is used.
 
