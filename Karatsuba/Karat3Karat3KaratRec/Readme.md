@@ -38,5 +38,5 @@ Or run :
 make TEST=1 SIZE=size
 ./Karat3_3
 ```
-with *size=(degree+1)/9*, where *degree* is one of the degrees above mentioned to get the performances for the degree.
+with *size=(degree+1)/9*, where *degree* is one of the degrees above mentioned to get the performances for the selected degree.
  
