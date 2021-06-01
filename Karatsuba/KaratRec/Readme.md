@@ -14,12 +14,17 @@ To run the tests you must have :
 grep vpclmulqdq /proc/cpuinfo
 ``` 
 to see if this feature is available.
-* the gf2x library (version >= 1.2) installed on your system.
+* the gf2x library (version >= 1.2) 
 * gcc version 10.2.0
-
+* the msr-tools
 **How to run ?**
 
-From a shell, run :
+First configure the msr-tools and disable the turbo-boost feature. As root, run:
+```console
+bash measure.sh
+```
+
+Next as a normal user, run :
 
 ```console
 make bench
