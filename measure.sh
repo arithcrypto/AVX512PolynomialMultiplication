@@ -1,5 +1,4 @@
 #!/bin/bash
-# run as root not only sudo
 # Load the msr-tools module in the kernel
 modprobe msr
 echo "-1" > /proc/sys/kernel/perf_event_paranoid
