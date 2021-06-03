@@ -422,7 +422,7 @@ inline static void karat_mult_256_512(__m512i * C, const __m512i * A, const __m5
 //
 *************************************************************************************/
 
-inline int karatRec(uint64_t * C64, const uint64_t * A64, const uint64_t * B64, int size)//size est en nombre de mots de 64 bits !!!
+inline int karatRec(uint64_t * C64, const uint64_t * A64, const uint64_t * B64, int size)//size is given as a number of 64-bit words !!!
 {
 
 
