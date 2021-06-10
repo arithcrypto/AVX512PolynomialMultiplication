@@ -4,7 +4,7 @@ This repository contains :
 * **measure_official_release** : Makefile and C-source code to measure the performance of the HQC official release (Optimized_Implementation)
 * **patches_AVX2_AVX512** : Patches to apply to the official release to apply new multiplication process for hqc-128 and hqc-192 (AVX2), and patches to obtain an AVX_512 version of the HQC package.
 
-**How to run ?**
+**How to measure the performances of the official release ?**
 
 First unzip the HQC release:
 ```console
@@ -25,12 +25,12 @@ cp main_bench.c Optimized_Implementation/hqc-256/src/
 
 To execute a bench :
 ```console
-cd Optimized_Implementation/hqc-*size*/
+cd Optimized_Implementation/hqc-size/
 make bench
 bin/bench
 ```
 where *size* is 128, 192 or 256.
 
+**How to apply our patches ?**
 
-
-
+see README of **patches_AVX2_AVX512** folder.
