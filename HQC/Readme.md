@@ -10,9 +10,9 @@ First unzip the HQC release:
 ```console
 unzip hqc-submission_2020-10-01.zip
 ```
-**IMPORTANT** : Our work and the measurements only concerns the **Optimized_Implementation folder**.
+**IMPORTANT** : Our work and the measurements only concern the **Optimized_Implementation folder**.
 
-Next copy the **Makefile** and **main_bench.c** from the folder **measure_official_release** into the appropriate folders :
+Copy the **Makefile** and **main_bench.c** from the folder **measure_official_release** into the appropriate folders :
 ```console
 cp Makefile Optimized_Implementation/hqc-128
 cp Makefile Optimized_Implementation/hqc-192
