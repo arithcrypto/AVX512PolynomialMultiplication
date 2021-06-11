@@ -24,6 +24,11 @@ cp AVXversion/hqc-size/* Optimized_Implementation/hqc-size/src/
 ```
 where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
 
+Do not forget to run the script **measure.sh** located at the top folder of this repository
+```bash
+sudo bash measure.sh
+```
+
 To execute a bench :
 ```console
 cd Optimized_Implementation/hqc-size/
