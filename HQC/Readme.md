@@ -23,7 +23,7 @@ cp main_bench.c Optimized_Implementation/hqc-192/src/
 cp main_bench.c Optimized_Implementation/hqc-256/src/
 ```
 Do not forget to run the script **measure.sh** located at the top folder of this repository
-```bash
+```console
 sudo bash measure.sh
 ```
 

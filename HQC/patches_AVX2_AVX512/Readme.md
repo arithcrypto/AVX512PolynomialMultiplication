@@ -25,7 +25,7 @@ cp AVXversion/hqc-size/* Optimized_Implementation/hqc-size/src/
 where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
 
 Do not forget to run the script **measure.sh** located at the top folder of this repository
-```bash
+```console
 sudo bash measure.sh
 ```
 
@@ -37,4 +37,9 @@ bin/bench
 ```
 where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
 
+**WARNING** : to execute the AVX512 patches, you must have an AVX512 processor with the **VPCLMULQDQ** instruction. From a shell, just run : 
+```console
+grep vpclmulqdq /proc/cpuinfo
+```
+to see if this feature is available.
 
