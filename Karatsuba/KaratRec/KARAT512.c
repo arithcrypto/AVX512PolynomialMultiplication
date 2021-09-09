@@ -33,16 +33,11 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	
 	const __m512i perm_al = (__m512i){0x0UL,0x1UL,0x0UL,0x1UL,0x2UL,0x3UL,0x2UL,0x3UL};
 	const __m512i perm_ah = (__m512i){0x4UL,0x5UL,0x4UL,0x5UL,0x6UL,0x7UL,0x6UL,0x7UL};
-	
 	const __m512i perm_bl = (__m512i){0x0UL,0x1UL,0x2UL,0x3UL,0x0UL,0x1UL,0x2UL,0x3UL};
 	const __m512i perm_bh = (__m512i){0x4UL,0x5UL,0x6UL,0x7UL,0x4UL,0x5UL,0x6UL,0x7UL};
-	
 	const __m512i mask_D1 = _mm512_set_epi64 (6 , 7 , 4 , 5 , 2 , 3 , 0 , 1) ;
-	
 	const __m512i perm_h = (__m512i){0x4UL,0x5UL,0x0UL,0x1UL,0x2UL,0x3UL,0x6UL,0x7UL};
-
 	const __m512i perm_l = (__m512i){0x0UL,0x1UL,0x4UL,0x5UL,0x6UL,0x7UL,0x2UL,0x3UL};
-	
 	const __m512i mask = _mm512_set_epi64 (15,14,13,12,3,2,1,0);
 	
 	__m512i al = _mm512_permutexvar_epi64(perm_al, *A );
@@ -54,10 +49,10 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	__m512i sb = bl^bh;
 	
 	
-	// Première multiplication 256 : AlBl
+	// First multiplication 256 : AlBl
 	
-	__m512i s1 = al ^ _mm512_permutex_epi64(al , 0xb1 ) ; //(a , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
-	__m512i s2 = bl ^ _mm512_permutex_epi64(bl , 0xb1 ) ; //(b , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
+	__m512i s1 = al ^ _mm512_permutex_epi64(al , 0xb1 ) ;
+	__m512i s2 = bl ^ _mm512_permutex_epi64(bl , 0xb1 ) ;
 	__m512i D0_512=_mm512_clmulepi64_epi128(al,bl,0x00);
 	__m512i D1_512=_mm512_clmulepi64_epi128(s1,s2,0x00);
 	__m512i D2_512=_mm512_clmulepi64_epi128(al,bl,0x11);
@@ -68,26 +63,19 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	__m512i h =  _mm512_mask_xor_epi64( D2_512 , 0x55 , D2_512 , D1_512 ) ;
 	
 	__m512i cl = _mm512_permutex2var_epi64(l,mask,h);
-	//afficheVect((uint64_t*)&c,"c", 8);
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
+
 	l = _mm512_permutexvar_epi64(perm_l, l );	
 	h = _mm512_permutexvar_epi64(perm_h, h );
 	
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
-	__m512i middle = _mm512_maskz_xor_epi64(0x3c,h,l);//*/
-	//afficheVect((uint64_t*)&middle,"middle", 8);
-	
-	//afficheVect((uint64_t*)&c,"c", 8);
+	__m512i middle = _mm512_maskz_xor_epi64(0x3c,h,l);
+
 	cl ^= middle;
 	
 	
+	// Second multiplication 256 : AhBh
 	
-	// Deuxième multiplication 256 : AhBh
-	
-	s1 = ah ^ _mm512_permutex_epi64(ah , 0xb1 ) ; //(a , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
-	s2 = bh ^ _mm512_permutex_epi64(bh , 0xb1 ) ; //(b , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
+	s1 = ah ^ _mm512_permutex_epi64(ah , 0xb1 ) ;
+	s2 = bh ^ _mm512_permutex_epi64(bh , 0xb1 ) ;
 	D0_512=_mm512_clmulepi64_epi128(ah,bh,0x00);
 	D1_512=_mm512_clmulepi64_epi128(s1,s2,0x00);
 	D2_512=_mm512_clmulepi64_epi128(ah,bh,0x11);
@@ -95,28 +83,21 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	D1_512 = _mm512_permutexvar_epi64( mask_D1 , D0_512^D1_512^D2_512 ) ;
 	l =  _mm512_mask_xor_epi64( D0_512 , 0xaa , D0_512 , D1_512 ) ;
 	h =  _mm512_mask_xor_epi64( D2_512 , 0x55 , D2_512 , D1_512 ) ;
-
 	
 	__m512i ch = _mm512_permutex2var_epi64(l,mask,h);
-	//afficheVect((uint64_t*)&c,"c", 8);
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
+
 	l = _mm512_permutexvar_epi64(perm_l, l );	
 	h = _mm512_permutexvar_epi64(perm_h, h );
 	
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
-	middle = _mm512_maskz_xor_epi64(0x3c,h,l);//*/
-	//afficheVect((uint64_t*)&middle,"middle", 8);
-	
-	//afficheVect((uint64_t*)&c,"c", 8);
+	middle = _mm512_maskz_xor_epi64(0x3c,h,l);
+
 	ch ^= middle;
 	
 	
-	// Troisième multiplication 256 : SASB
+	// Third multiplication 256 : SASB
 	
-	s1 = sa ^ _mm512_permutex_epi64(sa , 0xb1 ) ; //(a , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
-	s2 = sb ^ _mm512_permutex_epi64(sb , 0xb1 ) ; //(b , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
+	s1 = sa ^ _mm512_permutex_epi64(sa , 0xb1 ) ;
+	s2 = sb ^ _mm512_permutex_epi64(sb , 0xb1 ) ;
 	D0_512=_mm512_clmulepi64_epi128(sa,sb,0x00);
 	D1_512=_mm512_clmulepi64_epi128(s1,s2,0x00);
 	D2_512=_mm512_clmulepi64_epi128(sa,sb,0x11);
@@ -127,34 +108,22 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	h =  _mm512_mask_xor_epi64( D2_512 , 0x55 , D2_512 , D1_512 ) ;
 	
 	__m512i cm = _mm512_permutex2var_epi64(l,mask,h);
-	//afficheVect((uint64_t*)&c,"c", 8);
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
+
 	l = _mm512_permutexvar_epi64(perm_l, l );	
 	h = _mm512_permutexvar_epi64(perm_h, h );
 	
-	//afficheVect((uint64_t*)&h,"h", 8);
-	//afficheVect((uint64_t*)&l,"l", 8);
-	middle = _mm512_maskz_xor_epi64(0x3c,h,l);//*/
-	//afficheVect((uint64_t*)&middle,"middle", 8);
+	middle = _mm512_maskz_xor_epi64(0x3c,h,l);
 	
-	//afficheVect((uint64_t*)&c,"c", 8);
+	// Final reconstruction
+
 	cm ^= middle^cl^ch;
-	//afficheVect((uint64_t*)&h,"h", 8);
+
 	const __m512i perm_cm = (__m512i){0x4UL,0x5UL,0x6UL,0x7UL,0x0UL,0x1UL,0x2UL,0x3UL};
 	cm = _mm512_permutexvar_epi64(perm_cm, cm );	
-	//afficheVect((uint64_t*)&h,"h", 8);
 	
 	C[0]= _mm512_mask_xor_epi64(cl,0xf0,cl,cm);
 	C[1]= _mm512_mask_xor_epi64(ch,0x0f,ch,cm);
 	
-	/*int512 middle_512;
-	__m256i *C_256 = (__m256i *) C;
-	middle_512.i512[0] = cl^ch^cm;
-	
-	C_256[1] ^= middle_512.i256[0];
-	C_256[2] ^= middle_512.i256[1];*/
-
 }
 	
 
