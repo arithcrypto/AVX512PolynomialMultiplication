@@ -31,7 +31,7 @@ static inline void mul128x4 ( __m512i *h , __m512i *l ,__m512i a , __m512i b )
 
 
 
-static inline void karat_mult_1_512( __m512i *z ,const __m512i a , const __m512i b )
+static inline void karat_mult_1_512( __m512i *z ,const __m512i *a , const __m512i *b )
 {
 	const __m512i mask0 = _mm512_set_epi64 (13 , 12 , 5, 4, 9, 8 , 1 , 0) ;
 	const __m512i mask1 = _mm512_set_epi64 (15 , 14 , 7, 6, 11, 10 , 3 , 2) ;
@@ -44,12 +44,12 @@ static inline void karat_mult_1_512( __m512i *z ,const __m512i a , const __m512i
 
 	__m512i t512[4], xh, xl, xab, xabh, xabl, xab1, xab2, yl, yh, yab, yabh, yabl;
 	
-	t512[0] = PERM64VAR ( mask_s1 , a ) ^ PERM64VAR ( mask_s2 , a ) ;
-	t512[1] = PERM64VAR ( mask_s1 , b ) ^ PERM64VAR ( mask_s2 , b ) ;
+	t512[0] = PERM64VAR ( mask_s1 , *a ) ^ PERM64VAR ( mask_s2 , *a ) ;
+	t512[1] = PERM64VAR ( mask_s1 , *b ) ^ PERM64VAR ( mask_s2 , *b ) ;
 	t512[2] = t512[0] ^ ALIGN ( t512[0] , t512[0] , 4) ;
 	t512[3] = t512[1] ^ ALIGN ( t512[1] , t512[1] , 4) ;
 
-	mul128x4 (& xh , & xl , a , b ) ;
+	mul128x4 (& xh , & xl , *a , *b ) ;
 	mul128x4 (& xabh , & xabl , t512[0] , t512[1]) ;
 	mul128x4 (& yabh , & yabl , t512[2] , t512[3]) ;
 
