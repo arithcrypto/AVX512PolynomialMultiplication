@@ -13,12 +13,16 @@ endif
 
 ifdef DGK
         MACROS+= -DDGK
-else ifdef KARAT256      
-        MACROS+= -DKARAT256 
+else ifdef DGK2      
+        MACROS+= -DDGK2
 else ifdef AVX2      
         MACROS+= -DAVX2
+else ifdef KARAT256      
+        MACROS+= -DKARAT256 
+else ifdef SB256      
+        MACROS+= -DSB256 
 else
-	MACROS+= -DSB256
+	MACROS+= -DKARAT512
 endif
 
 OPTIONS+=$(MACROS)
@@ -40,7 +44,7 @@ bench:  KaratRec
 
 
 allbench:
-	for mult in SB256 KARAT256 DGK AVX2 ; do \
+	for mult in DGK DGK2 AVX2 KARAT256 SB256 KARAT512 ; do \
 		make bench $$mult=1; \
 	done
 
