@@ -465,9 +465,7 @@ inline int karatRec(uint64_t * C64, const uint64_t * A64, const uint64_t * B64, 
 	
 	size = size>>2;
 
-	if(size == 1) karat_mult_256_256_512(C, (__m256i *)A, (__m256i *)B);
-	else if(size == 2) karat_mult_1_512(C, A, B);
-	else if(size == 4) karat_mult_2_512(C, A, B);
+	if(size == 4) karat_mult_2_512(C, A, B);
 	else if(size == 8) karat_mult_4_512(C, A, B);
 	else if(size == 16) karat_mult_8_512(C, A, B);
 	else if(size == 32) karat_mult_16_512(C, A, B);
