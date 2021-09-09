@@ -1,79 +1,139 @@
-
-#define PERM64(a , mask )            _mm512_permutex_epi64( a , mask )
-#define PERM64X2(a , mask , b )      _mm512_permutex2var_epi64(a , mask , b )
-#define PERM64VAR( mask , a )      _mm512_permutexvar_epi64( mask , a )
-#define MUL(a , b , imm8 )      _mm512_clmulepi64_epi128(a , b , imm8 )
-#define MXOR( src , mask , a , b )      _mm512_mask_xor_epi64( src , mask , a , b )
-#define ALIGN(a , b , count )      _mm512_alignr_epi64(a , b , count )
-#define STORE( mem , reg )      _mm512_storeu_si512( mem , reg )
-#define LOAD( mem )      _mm512_loadu_si512( mem )
-#define EXPANDLOAD( mask , mem )      _mm512_maskz_expandloadu_epi64( mask , mem )
-#define LOAD128( mem )      _mm_loadu_si128( mem )
-#define STORE128( mem , reg )      _mm_storeu_si128( mem , reg )
-#define MUL128(a , b , imm8 )      _mm_clmulepi64_si128(a , b , imm8 )
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <immintrin.h>
 
 
 
-static inline void mul128x4 ( __m512i *h , __m512i *l ,__m512i a , __m512i b )
+inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_2_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_4_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_8_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_16_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_32_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_64_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_128_512(__m512i * C, const __m512i * A, const __m512i * B);
+inline static void karat_mult_256_512(__m512i * C, const __m512i * A, const __m512i * B);
+
+
+
+inline static void karat_mult_256_256_512(__m512i * C, const __m256i * A, const __m256i * B);
+
+
+
+__m512i mask_middle= (__m512i){0x0UL,0xffffffffffffffffUL,0xffffffffffffffffUL,0x0UL,0x0UL,0xffffffffffffffffUL,0xffffffffffffffffUL,0x0UL};
+
+__m512i idx_a=(__m512i){0x0UL,0x2UL,0x1UL,0x3UL,0x0UL,0x2UL,0x1UL,0x3UL};
+__m512i idx_b=(__m512i){0x0UL,0x2UL,0x1UL,0x3UL,0x1UL,0x3UL,0x0UL,0x2UL};
+__m512i idx_s=(__m512i){0x1UL,0x2UL,0x3UL,0x3UL,0x5UL,0x2UL,0x7UL,0x3UL};
+
+__m512i idx_l=(__m512i){0x0UL,0x4UL,0x5UL,0x0UL,0x0UL,0xcUL,0xdUL,0x0UL};
+__m512i idx_h=(__m512i){0x0UL,0x6UL,0x7UL,0x0UL,0x0UL,0xeUL,0xfUL,0x0UL};
+__m512i idx_r=(__m512i){0x0UL,0x1UL,0x2UL,0x3UL,0x8UL,0x9UL,0xaUL,0xbUL};
+__m512i idx_r1=(__m512i){0x4UL,0x5UL,0x0UL,0x1UL,0x2UL,0x3UL,0x6UL,0x7UL};
+__m512i idx_r2=(__m512i){0x6UL,0x7UL,0x8UL,0x9UL,0xaUL,0xbUL,0x6UL,0x7UL};
+__m512i idx_r3=(__m512i){0x6UL,0x7UL,0xcUL,0xdUL,0xeUL,0xfUL,0x6UL,0x7UL};
+__m512i idx_r4=(__m512i){0x0UL,0x1UL,0x6UL,0x0UL,0x1UL,0x7UL,0x6UL,0x7UL};
+
+
+/**
+ * @brief Compute C(x) = A(x)*B(x) 
+ * A(x) and B(x) are stored in 256-bit registers
+ * This function computes A(x)*B(x) using Karatsuba
+ *
+ * @param[out] C Pointer to the result
+ * @param[in] A Pointer to the polynomial A(x)
+ * @param[in] B Pointer to the polynomial B(x)
+ */
+
+inline static void karat_mult_256_256_512(__m512i * Out, const __m256i * A256, const __m256i * B256)
 {
-	const __m512i mask_abq = _mm512_set_epi64 (6 , 7 , 4 , 5 , 2 , 3 , 0 , 1) ;
-	__m512i s1 = a ^ PERM64(a , 0xb1 ) ; //(a , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
-	__m512i s2 = b ^ PERM64(b , 0xb1 ) ; //(b , _MM_SHUFFLE (2 , 3 , 0 , 1) ) ;
-	__m512i lq = MUL (a , b , 0x00 ) ;
-	__m512i hq = MUL (a , b , 0x11 ) ;
-	__m512i abq = lq ^ hq ^ MUL ( s1 , s2 , 0x00 ) ;
-	abq = PERM64VAR ( mask_abq , abq ) ;
-	*l = MXOR ( lq , 0xaa , lq , abq ) ;
-	*h = MXOR ( hq , 0x55 , hq , abq ) ;
-}
-
-
-
-
-
-static inline void karat_mult_1_512( __m512i *z ,const __m512i a , const __m512i b )
-{
-	const __m512i mask0 = _mm512_set_epi64 (13 , 12 , 5, 4, 9, 8 , 1 , 0) ;
-	const __m512i mask1 = _mm512_set_epi64 (15 , 14 , 7, 6, 11, 10 , 3 , 2) ;
-	const __m512i mask2 = _mm512_set_epi64 (3 , 2, 1, 0, 7, 6 , 5 , 4) ;
-	const __m512i mask3 = _mm512_set_epi64 (11 , 10 , 9, 8, 3, 2 , 1 , 0) ;
-	const __m512i mask4 = _mm512_set_epi64 (15 , 14 , 13, 12, 7, 6 , 5 , 4) ;
-	const __m512i mask_s2 = _mm512_set_epi64 (3 , 2, 7, 6, 5, 4 , 1 , 0) ;
-	const __m512i mask_s1 = _mm512_set_epi64 (7 , 6, 5, 4, 1, 0 , 3 , 2) ;
-
-
-	__m512i t512[4], xh, xl, xab, xabh, xabl, xab1, xab2, yl, yh, yab, yabh, yabl;
+	/*
+		Instruction count:
+			- 2* _mm512_broadcast_i64x4
+			- 6* _mm512_permutexvar_epi64
+			- 5* _mm512_permutex2var_epi64
+			- 3* clmulepi64_epi128
+			- 7* XOR
+			- 1* AND
+	*/
 	
-	t512[0] = PERM64VAR ( mask_s1 , a ) ^ PERM64VAR ( mask_s2 , a ) ;
-	t512[1] = PERM64VAR ( mask_s1 , b ) ^ PERM64VAR ( mask_s2 , b ) ;
-	t512[2] = t512[0] ^ ALIGN ( t512[0] , t512[0] , 4) ;
-	t512[3] = t512[1] ^ ALIGN ( t512[1] , t512[1] , 4) ;
-
-	mul128x4 (& xh , & xl , a , b ) ;
-	mul128x4 (& xabh , & xabl , t512[0] , t512[1]) ;
-	mul128x4 (& yabh , & yabl , t512[2] , t512[3]) ;
+	
+	__m512i A512, B512, SAA512, SBB512;
+	
+	__m512i middle, middle_saa, middle_512, R0_512,R1_512,R2_512;
 
 
-	xab = xl ^ xh ^ PERM64X2 ( xabl , mask0 , xabh ) ;
-	yl = PERM64X2 ( xl , mask3 , xh ) ;
-	yh = PERM64X2 ( xl , mask4 , xh ) ;
-	xab1 = ALIGN ( xab , xab , 6) ;
-	xab2 = ALIGN ( xab , xab , 2) ;
-	yl = MXOR ( yl , 0x3c , yl , xab1 ) ;
-	yh = MXOR ( yh , 0x3c , yh , xab2 ) ;
+	__m512i tmp=_mm512_broadcast_i64x4(*A256);
+	A512=_mm512_permutexvar_epi64 (idx_a, tmp);
+	tmp=_mm512_broadcast_i64x4(*B256);
+	B512=_mm512_permutexvar_epi64 (idx_b, tmp);
+	
+	
+	R0_512=_mm512_clmulepi64_epi128(A512,B512,0);
+	R2_512=_mm512_clmulepi64_epi128(A512,B512,0x11);
+	SAA512=A512^_mm512_permutexvar_epi64 (idx_s,A512);
+	SBB512=B512^_mm512_permutexvar_epi64 (idx_s,B512);
+	
+	R1_512=_mm512_clmulepi64_epi128(SAA512,SBB512,0);
 
-	__m512i oxh= PERM64X2 ( xabl , mask1 , xabh ) ;
-	__m512i oxl= ALIGN ( oxh , oxh , 4) ;
-	yab= oxl ^ oxh ^ PERM64X2 ( yabl , mask0 , yabh ) ;
-	yab= MXOR ( oxh , 0x3c , oxh , ALIGN ( yab , yab , 2) ) ;
-	yab ^= yl ^yh ;
-
-	yab = PERM64VAR ( mask2 , yab ) ;
-	z[0] = MXOR ( yl , 0xf0 , yl , yab ) ;
-	z[1] = MXOR ( yh , 0x0f , yh , yab ) ;
+	middle = _mm512_permutex2var_epi64 (R0_512, idx_l, R2_512);
+	middle ^=_mm512_permutex2var_epi64 (R0_512, idx_h, R2_512);
+	middle &=mask_middle;
+	
+	
+	// !!!!!!!!!!!!! Final result !!!!!!!!!!!!!!!
+	Out[0] = _mm512_permutex2var_epi64 (R0_512, idx_r, R2_512)^middle;//&mask_middle;
+	
+	R1_512 = _mm512_permutexvar_epi64 (idx_r1, R1_512);
+	R1_512^= _mm512_permutex2var_epi64 (R1_512, idx_r2, Out[0]);
+	R1_512^= _mm512_permutex2var_epi64 (R1_512, idx_r3, Out[0]);
+	R1_512^= _mm512_permutexvar_epi64 (idx_r4, R1_512);
+	Out[0] ^=R1_512;
 
 }
 
+
+
+
+
+/**
+ * @brief Compute C(x) = A(x)*B(x) 
+ *
+ * This function computes A(x)*B(x) using Karatsuba
+ * A(x) and B(x) of degree at most 511 are stored in one 512-bit word
+ * @param[out] C Pointer to the result
+ * @param[in] A Pointer to the polynomial A(x)
+ * @param[in] B Pointer to the polynomial B(x)
+ */
+
+inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512i * B)
+{
+	__m512i D0[1],D1[1],D2[1];
+	__m256i SAA,SBB,
+		*D0_256 = (__m256i *) D0, *D1_256 = (__m256i *) D1, *D2_256 = (__m256i *) D2,
+		*A_256 = (__m256i *) A, *B_256 = (__m256i *) B, *C_256 = (__m256i *) C;
+	
+	karat_mult_256_256_512( D0, A_256, B_256);
+	karat_mult_256_256_512( D2, A_256+1, B_256+1);
+	SAA=A_256[0]^A_256[1];SBB=B_256[0]^B_256[1];
+	karat_mult_256_256_512( D1, &SAA, &SBB);
+	
+	
+	
+	C[0]=D0[0];
+	C[1]=D2[0];
+	
+	int512 middle;
+	middle.i512[0] = D0[0]^D1[0]^D2[0];
+	
+	C_256[1] ^= middle.i256[0];
+	C_256[2] ^= middle.i256[1];
+	
+	
+	
+}
+	
 
 
 /**
@@ -366,7 +426,7 @@ inline static void karat_mult_256_512(__m512i * C, const __m512i * A, const __m5
 //                       MULTIPLICATION
 //
 //	64 bit Wrapper for
-//	Karatsuba Multiplication
+//	Kartsuba Multiplication
 //                   
 //
 *************************************************************************************/
@@ -382,7 +442,9 @@ inline int karatRec(uint64_t * C64, const uint64_t * A64, const uint64_t * B64, 
 	
 	size = size>>2;
 
-	if(size == 4) karat_mult_2_512(C, A, B);
+	if(size == 1) karat_mult_256_256_512(C, (__m256i *)A, (__m256i *)B);
+	else if(size == 2) karat_mult_1_512(C, A, B);
+	else if(size == 4) karat_mult_2_512(C, A, B);
 	else if(size == 8) karat_mult_4_512(C, A, B);
 	else if(size == 16) karat_mult_8_512(C, A, B);
 	else if(size == 32) karat_mult_16_512(C, A, B);
@@ -391,7 +453,6 @@ inline int karatRec(uint64_t * C64, const uint64_t * A64, const uint64_t * B64, 
 	else if(size == 256) karat_mult_128_512(C, A, B);
 	else if(size == 512) karat_mult_256_512(C, A, B);
 
-	
 	
 
 	return 0;
