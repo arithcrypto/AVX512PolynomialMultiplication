@@ -37,4 +37,6 @@ void printVect(unsigned long int *A, char *var, int size)
 	#include "KARAT512.c"
 #elif DGK2
 	#include "DGK2.c"
+#elif KARAT512_SB
+	#include "KARAT512_SB.c"
 #endif
