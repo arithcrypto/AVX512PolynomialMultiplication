@@ -13,13 +13,13 @@ endif
 OPTIONS+=$(MACROS)
 
 Karat5_5 : Karat5_5.o fonctions.o
-	gcc-10 -o Karat5_5 Karat5_5.o fonctions.o $(OPTIONS)
+	gcc -o Karat5_5 Karat5_5.o fonctions.o $(OPTIONS)
 
 fonctions.o : fonctions.c fonctions.h
-	gcc-10 -c fonctions.c $(OPTIONS)
+	gcc -c fonctions.c $(OPTIONS)
 
 Karat5_5.o : fonctions.o
-	gcc-10 -c Karat5_5.c $(OPTIONS)
+	gcc -c Karat5_5.c $(OPTIONS)
 
 bench:
 	for size in 512 1024 2048 4096 ; do \
