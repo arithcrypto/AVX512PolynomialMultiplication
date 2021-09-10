@@ -53,7 +53,7 @@ inline static void karat_mult_256_256_512(__m512i * Out, const __m256i * A256, c
 			- 2* _mm512_broadcast_i64x4
 			- 6* _mm512_permutexvar_epi64
 			- 5* _mm512_permutex2var_epi64
-			- 3* clmulepi64_epi128
+			- 3* _mm512_clmulepi64_epi128
 			- 7* XOR
 			- 1* AND
 	*/

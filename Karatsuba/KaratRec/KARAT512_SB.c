@@ -30,6 +30,16 @@ inline static void karat_mult_256_512(__m512i * C, const __m512i * A, const __m5
 
 inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512i * B)
 {
+	/*
+		Instruction count:
+			- 13* _mm512_permutexvar_epi64
+			- 3*  _mm512_permutex2var_epi64
+			- 12* _mm512_clmulepi64_epi128
+			- 11* _mm512_mask_xor_epi64
+			- 11* XOR
+			- 2* stores
+	*/
+
 	
 	const __m512i perm_al = (__m512i){0x0UL,0x1UL,0x0UL,0x1UL,0x2UL,0x3UL,0x2UL,0x3UL};
 	const __m512i perm_ah = (__m512i){0x4UL,0x5UL,0x4UL,0x5UL,0x6UL,0x7UL,0x6UL,0x7UL};
