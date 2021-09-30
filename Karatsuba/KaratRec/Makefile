@@ -1,5 +1,4 @@
 OPTIONS= -O4 -g -march=tigerlake -lm -lgf2x
-#-DDGK# -DKARAT256 -funroll-all-loops
 
 ifdef SIZE
         MACROS= -DSIZE_N=$(SIZE)
@@ -23,6 +22,8 @@ else ifdef SB256
         MACROS+= -DSB256 
 else ifdef KARAT512      
         MACROS+= -DKARAT512 
+else ifdef SB512      
+        MACROS+= -DSB512 
 else
 	MACROS+= -DKARAT512_SB
 endif
@@ -46,7 +47,7 @@ bench:  KaratRec
 
 
 allbench:
-	for mult in DGK DGK2 AVX2 KARAT256 SB256 KARAT512 KARAT512_SB ; do \
+	for mult in DGK DGK2 AVX2 KARAT256 SB256 SB512 KARAT512 KARAT512_SB ; do \
 		make bench $$mult=1; \
 	done
 
