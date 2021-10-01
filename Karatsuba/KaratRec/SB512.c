@@ -55,9 +55,6 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	__m512i bl = _mm512_permutexvar_epi64(perm_bl, *B );
 	__m512i bh = _mm512_permutexvar_epi64(perm_bh, *B );
 	
-	__m512i sa = al^ah;
-	__m512i sb = bl^bh;
-	
 	
 	// First schoolbook multiplication 256 : AlBl
 	
@@ -103,7 +100,7 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 	ch ^= middle;
 	
 	
-	// Third schoolbook multiplication 256 : SASB
+	// Third schoolbook multiplication 256 : AlBh
 	
 	R0_512=_mm512_clmulepi64_epi128(al,bh,0x00);
 	R1_512=_mm512_clmulepi64_epi128(al,bh,0x01);
@@ -123,7 +120,7 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 
 	cm ^= middle;
 
-	// Fourth schoolbook multiplication 256 : SASB
+	// Fourth schoolbook multiplication 256 : AhBl
 	
 	R0_512=_mm512_clmulepi64_epi128(ah,bl,0x00);
 	R1_512=_mm512_clmulepi64_epi128(ah,bl,0x01);
