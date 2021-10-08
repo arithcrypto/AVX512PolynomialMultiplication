@@ -32,11 +32,11 @@ inline static void karat_mult_1_512(__m512i * C, const __m512i * A, const __m512
 {
 	/*
 		Instruction count:
-			- 13* _mm512_permutexvar_epi64
-			- 3*  _mm512_permutex2var_epi64
-			- 12* _mm512_clmulepi64_epi128
-			- 11* _mm512_mask_xor_epi64
-			- 11* XOR
+			- 18* _mm512_permutexvar_epi64
+			- 5*  _mm512_permutex2var_epi64
+			- 16* _mm512_clmulepi64_epi128
+			- 14* _mm512_mask_xor_epi64
+			- 5* XOR
 			- 2* stores
 	*/
 
