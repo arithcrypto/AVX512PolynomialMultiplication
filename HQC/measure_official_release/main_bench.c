@@ -12,8 +12,8 @@
 
 #include <stdint.h>
 
-#define NB_TEST 100
-#define NB_SAMPLES 1000
+#define NB_TEST 1000
+#define NB_SAMPLES 100
 
 
 
