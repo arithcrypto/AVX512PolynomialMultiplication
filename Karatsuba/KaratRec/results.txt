@@ -1,0 +1,1531 @@
+for mult in SB256 KARAT256 DGK AVX2 ; do \
+	make bench $mult=1; \
+done
+make[1] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+for size in 1024 2048 4096 8192 16384 32768 65536 131072 ; do \
+	make -B TEST=1 SIZE=$size ; \
+	./KaratRec ; \
+done
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 1024
+SIZE_N = 1024, t = 16, t/(256/WORD) =4
+16
+SIZE_N_64 = 16, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 359
+timing karatRec        : 167
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 1249
+#Instructions karatRec        : 276
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 2048
+SIZE_N = 2048, t = 32, t/(256/WORD) =8
+32
+SIZE_N_64 = 32, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 1109
+timing karatRec        : 541
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 3856
+#Instructions karatRec        : 908
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 4096
+SIZE_N = 4096, t = 64, t/(256/WORD) =16
+64
+SIZE_N_64 = 64, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 2949
+timing karatRec        : 1685
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 11079
+#Instructions karatRec        : 2769
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 8192
+SIZE_N = 8192, t = 128, t/(256/WORD) =32
+128
+SIZE_N_64 = 128, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 8742
+timing karatRec        : 5204
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 33182
+#Instructions karatRec        : 8718
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 16384
+SIZE_N = 16384, t = 256, t/(256/WORD) =64
+256
+SIZE_N_64 = 256, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 26128
+timing karatRec        : 15675
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 100163
+#Instructions karatRec        : 26482
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 32768
+SIZE_N = 32768, t = 512, t/(256/WORD) =128
+512
+SIZE_N_64 = 512, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 78889
+timing karatRec        : 47592
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 295755
+#Instructions karatRec        : 80736
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 65536
+SIZE_N = 65536, t = 1024, t/(256/WORD) =256
+1024
+SIZE_N_64 = 1024, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 226640
+timing karatRec        : 147572
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 853977
+#Instructions karatRec        : 244222
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DSB256
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DSB256
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DSB256
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 131072
+SIZE_N = 131072, t = 2048, t/(256/WORD) =512
+2048
+SIZE_N_64 = 2048, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 678367
+timing karatRec        : 446811
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 2516868
+#Instructions karatRec        : 736345
+
+Thanks, bye!
+
+make[1] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+make[1] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+for size in 1024 2048 4096 8192 16384 32768 65536 131072 ; do \
+	make -B TEST=1 SIZE=$size ; \
+	./KaratRec ; \
+done
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 1024
+SIZE_N = 1024, t = 16, t/(256/WORD) =4
+16
+SIZE_N_64 = 16, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 339
+timing karatRec        : 186
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 1224
+#Instructions karatRec        : 339
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 2048
+SIZE_N = 2048, t = 32, t/(256/WORD) =8
+32
+SIZE_N_64 = 32, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 998
+timing karatRec        : 627
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 3892
+#Instructions karatRec        : 1102
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 4096
+SIZE_N = 4096, t = 64, t/(256/WORD) =16
+64
+SIZE_N_64 = 64, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 3030
+timing karatRec        : 1937
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 11119
+#Instructions karatRec        : 3346
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 8192
+SIZE_N = 8192, t = 128, t/(256/WORD) =32
+128
+SIZE_N_64 = 128, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 8743
+timing karatRec        : 6205
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 33201
+#Instructions karatRec        : 10552
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 16384
+SIZE_N = 16384, t = 256, t/(256/WORD) =64
+256
+SIZE_N_64 = 256, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 26149
+timing karatRec        : 18043
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 100174
+#Instructions karatRec        : 32068
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 32768
+SIZE_N = 32768, t = 512, t/(256/WORD) =128
+512
+SIZE_N_64 = 512, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 80181
+timing karatRec        : 54881
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 295738
+#Instructions karatRec        : 97278
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 65536
+SIZE_N = 65536, t = 1024, t/(256/WORD) =256
+1024
+SIZE_N_64 = 1024, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 229421
+timing karatRec        : 169844
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 853960
+#Instructions karatRec        : 293873
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DKARAT256 
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DKARAT256 
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DKARAT256 
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 131072
+SIZE_N = 131072, t = 2048, t/(256/WORD) =512
+2048
+SIZE_N_64 = 2048, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 667900
+timing karatRec        : 511939
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 2516857
+#Instructions karatRec        : 885164
+
+Thanks, bye!
+
+make[1] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+make[1] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+for size in 1024 2048 4096 8192 16384 32768 65536 131072 ; do \
+	make -B TEST=1 SIZE=$size ; \
+	./KaratRec ; \
+done
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 1024
+SIZE_N = 1024, t = 16, t/(256/WORD) =4
+16
+SIZE_N_64 = 16, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 339
+timing karatRec        : 239
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 1232
+#Instructions karatRec        : 326
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 2048
+SIZE_N = 2048, t = 32, t/(256/WORD) =8
+32
+SIZE_N_64 = 32, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 1081
+timing karatRec        : 744
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 3898
+#Instructions karatRec        : 1137
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 4096
+SIZE_N = 4096, t = 64, t/(256/WORD) =16
+64
+SIZE_N_64 = 64, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 2926
+timing karatRec        : 2262
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 11136
+#Instructions karatRec        : 3632
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 8192
+SIZE_N = 8192, t = 128, t/(256/WORD) =32
+128
+SIZE_N_64 = 128, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 8757
+timing karatRec        : 6960
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 33201
+#Instructions karatRec        : 11535
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 16384
+SIZE_N = 16384, t = 256, t/(256/WORD) =64
+256
+SIZE_N_64 = 256, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 26074
+timing karatRec        : 21154
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 100173
+#Instructions karatRec        : 35483
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 32768
+SIZE_N = 32768, t = 512, t/(256/WORD) =128
+512
+SIZE_N_64 = 512, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 78578
+timing karatRec        : 65758
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 295755
+#Instructions karatRec        : 108329
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 65536
+SIZE_N = 65536, t = 1024, t/(256/WORD) =256
+1024
+SIZE_N_64 = 1024, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 232338
+timing karatRec        : 203855
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 853972
+#Instructions karatRec        : 328772
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DDGK
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DDGK
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DDGK
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 131072
+SIZE_N = 131072, t = 2048, t/(256/WORD) =512
+2048
+SIZE_N_64 = 2048, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 676447
+timing karatRec        : 621942
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 2516859
+#Instructions karatRec        : 992919
+
+Thanks, bye!
+
+make[1] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+make[1] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+for size in 1024 2048 4096 8192 16384 32768 65536 131072 ; do \
+	make -B TEST=1 SIZE=$size ; \
+	./KaratRec ; \
+done
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=1024 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 1024
+SIZE_N = 1024, t = 16, t/(256/WORD) =4
+16
+SIZE_N_64 = 16, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 391
+timing karatRec        : 183
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 1024
+		 Size =1024 bits
+
+t = 16, t/(256/WORD) =4, 
+SIZE_N = 1024,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 1228
+#Instructions karatRec        : 612
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=2048 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 2048
+SIZE_N = 2048, t = 32, t/(256/WORD) =8
+32
+SIZE_N_64 = 32, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 1041
+timing karatRec        : 610
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 2048
+		 Size =2048 bits
+
+t = 32, t/(256/WORD) =8, 
+SIZE_N = 2048,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 3891
+#Instructions karatRec        : 1867
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=4096 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 4096
+SIZE_N = 4096, t = 64, t/(256/WORD) =16
+64
+SIZE_N_64 = 64, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 2913
+timing karatRec        : 1929
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 4096
+		 Size =4096 bits
+
+t = 64, t/(256/WORD) =16, 
+SIZE_N = 4096,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 11115
+#Instructions karatRec        : 5684
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=8192 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 8192
+SIZE_N = 8192, t = 128, t/(256/WORD) =32
+128
+SIZE_N_64 = 128, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 8596
+timing karatRec        : 6038
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 8192
+		 Size =8192 bits
+
+t = 128, t/(256/WORD) =32, 
+SIZE_N = 8192,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 33209
+#Instructions karatRec        : 17991
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=16384 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 16384
+SIZE_N = 16384, t = 256, t/(256/WORD) =64
+256
+SIZE_N_64 = 256, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 26210
+timing karatRec        : 18327
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 16384
+		 Size =16384 bits
+
+t = 256, t/(256/WORD) =64, 
+SIZE_N = 16384,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 100175
+#Instructions karatRec        : 54840
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=32768 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 32768
+SIZE_N = 32768, t = 512, t/(256/WORD) =128
+512
+SIZE_N_64 = 512, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 78405
+timing karatRec        : 59613
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 32768
+		 Size =32768 bits
+
+t = 512, t/(256/WORD) =128, 
+SIZE_N = 32768,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 295760
+#Instructions karatRec        : 166410
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=65536 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 65536
+SIZE_N = 65536, t = 1024, t/(256/WORD) =256
+1024
+SIZE_N_64 = 1024, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 228433
+timing karatRec        : 187305
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 65536
+		 Size =65536 bits
+
+t = 1024, t/(256/WORD) =256, 
+SIZE_N = 65536,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 853994
+#Instructions karatRec        : 503014
+
+Thanks, bye!
+
+make[2] : on entre dans le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+gcc -c fonctions.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DAVX2
+gcc -c KaratRec.c -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DAVX2
+gcc -o KaratRec KaratRec.o fonctions.o -O4 -g -march=tigerlake -lm -lgf2x -DTEST -DSIZE_N=131072 -DAVX2
+make[2] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
+SIZE_N = 131072
+SIZE_N = 131072, t = 2048, t/(256/WORD) =512
+2048
+SIZE_N_64 = 2048, 
+SIZE_MAX_TEST_512 = 256, 
+	  /****************************/
+	 /   Tests on 1000 datasets   /
+	/****************************/
+
+gf2x vs karatRec: Victory !!!!!!!!!!!!!!!!!!!
+
+	  /*********************/
+	 / Timings !!!!!!!!!!!!/
+	/*********************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+timing gf2x_mul        : 667068
+timing karatRec        : 572984
+	  /**************************/
+	 / Instructions !!!!!!!!!!!!/
+	/**************************/
+
+		SIZE_N = 131072
+		 Size =131072 bits
+
+t = 2048, t/(256/WORD) =512, 
+SIZE_N = 131072,  
+
+gf2x_mul vs karatRec
+----------------------
+#Instructions gf2x_mul        : 2516844
+#Instructions karatRec        : 1515625
+
+Thanks, bye!
+
+make[1] : on quitte le répertoire « /home/pascal/TRAVAIL/PAPIERS/JCEN/AVX512PolynomialMultiplication/Karatsuba/KaratRec »
