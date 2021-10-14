@@ -104,8 +104,7 @@
 #define SYND_SIZE_256							(CEIL_DIVIDE(2*PARAM_DELTA, 16))
 
 #define RED_MASK                            	BITMASK(PARAM_N, 64)
-#define SHA512_BYTES                            64
+#define SHAKE256_512_BYTES                    	64
 #define SEED_BYTES                          	40
-#define SEEDEXPANDER_MAX_LENGTH             	4294967295
 
 #endif
