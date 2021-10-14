@@ -6,14 +6,14 @@
 #include <stdlib.h>
 #include <sys/syscall.h>
 
-#include "rng.h"
+#include "shake_prng.h"
 #include "api.h"
 #include "parameters.h"
 
 #include <stdint.h>
 
-#define NB_TEST 1000
-#define NB_SAMPLES 100
+#define NB_TEST 100
+#define NB_SAMPLES 1000
 
 
 
@@ -56,10 +56,6 @@ main ()
   unsigned char ct[CIPHERTEXT_BYTES];
   unsigned char ss1[SHARED_SECRET_BYTES];
   unsigned char ss2[SHARED_SECRET_BYTES];
-
-  unsigned char seed[48];
-  syscall (SYS_getrandom, seed, 48, 0);
-  randombytes_init (seed, NULL, 256);
 
 
   unsigned long long timer, t1, t2;

@@ -4,7 +4,7 @@
  */
 
 #include "hqc.h"
-#include "rng.h"
+//#include "rng.h"
 #include "parameters.h"
 #include "parsing.h"
 #include "gf2x.h"
@@ -29,9 +29,9 @@
  * @param[out] sk String containing the secret key
  */
 void hqc_pke_keygen(unsigned char* pk, unsigned char* sk) {
-	AES_XOF_struct sk_seedexpander;
-	AES_XOF_struct pk_seedexpander;
-
+    seedexpander_state sk_seedexpander;
+    seedexpander_state pk_seedexpander;
+    
     uint8_t sk_seed[SEED_BYTES] = {0};
     uint8_t pk_seed[SEED_BYTES] = {0};
     static __m512i h_512[VEC_N_512_SIZE_64 >> 3];
@@ -50,12 +50,12 @@ void hqc_pke_keygen(unsigned char* pk, unsigned char* sk) {
         memset(h_512, 0, (VEC_N_512_SIZE_64 >> 3) * sizeof(__m512i));
     #endif
 
-	// Create seed_expanders for public key and secret key
-	randombytes(sk_seed, SEED_BYTES);
-	seedexpander_init(&sk_seedexpander, sk_seed, sk_seed + 32, SEEDEXPANDER_MAX_LENGTH);
+    // Create seed_expanders for public key and secret key
+    shake_prng(sk_seed, SEED_BYTES);
+    seedexpander_init(&sk_seedexpander, sk_seed, SEED_BYTES);
 
-	randombytes(pk_seed, SEED_BYTES);
-	seedexpander_init(&pk_seedexpander, pk_seed, pk_seed + 32, SEEDEXPANDER_MAX_LENGTH);
+    shake_prng(pk_seed, SEED_BYTES);
+    seedexpander_init(&pk_seedexpander, pk_seed, SEED_BYTES);
 
 	// Compute secret key
     vect_set_random_fixed_weight(&sk_seedexpander, (__m256i *) x_512, PARAM_OMEGA);
@@ -98,7 +98,7 @@ void hqc_pke_keygen(unsigned char* pk, unsigned char* sk) {
  * @param[in] pk String containing the public key
  */
 void hqc_pke_encrypt(uint64_t *u, uint64_t *v, uint64_t *m, unsigned char *theta, const unsigned char *pk) {
-	AES_XOF_struct seedexpander;
+    seedexpander_state seedexpander;
     static __m512i h_512[VEC_N_512_SIZE_64 >> 3];
     static __m512i s_512[VEC_N_512_SIZE_64 >> 3];
     static __m512i r2_512[VEC_N_512_SIZE_64 >> 3];
@@ -126,7 +126,7 @@ void hqc_pke_encrypt(uint64_t *u, uint64_t *v, uint64_t *m, unsigned char *theta
     #endif
     
 	// Create seed_expander from theta
-	seedexpander_init(&seedexpander, theta, theta + 32, SEEDEXPANDER_MAX_LENGTH);
+	seedexpander_init(&seedexpander, theta, SEED_BYTES);
 
 	// Retrieve h and s from public key
     hqc_public_key_from_string((uint64_t *) h_512, (uint64_t *) s_512, pk);
