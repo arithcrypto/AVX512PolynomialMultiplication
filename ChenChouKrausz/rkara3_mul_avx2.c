@@ -847,7 +847,7 @@ int main()
 		
 		timer += mini;
 	}
-	printf("timer rkara3_mul_12532_bis  : %lu\n\n",timer/NSAMPLES);
+	printf("timer rkara3_mul_12352_bis  : %lu\n\n",timer/NSAMPLES);
 	
 	timer=0;
 	
@@ -906,7 +906,7 @@ int main()
 		
 		timer += mini;
 	}
-	printf("timer rkara3_mul_12532_bis  : %lu\n\n",timer/NSAMPLES);
+	printf("timer rkara3_mul_24704_bis  : %lu\n\n",timer/NSAMPLES);
 
 	return 0;
 }
