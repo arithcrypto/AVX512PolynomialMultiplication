@@ -21,7 +21,7 @@ Then copy the source codes from one of the patch subfolder into the correspondin
 ```console
 cp AVX2/hqc-size/* Optimized_Implementation/hqc-size/src/
 ```
-where is 128 or 192.
+where size is 128 or 192.
 
 Do not forget to run the script **measure.sh** located at the top folder of this repository
 ```console
@@ -34,6 +34,6 @@ cd Optimized_Implementation/hqc-size/
 make bench
 bin/bench
 ```
-where is 128 or 192.
+where size is 128 or 192.
 
 
