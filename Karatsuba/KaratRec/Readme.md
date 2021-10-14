@@ -4,10 +4,10 @@ The folder KaratRec contains the following files:
 * **SB512.c** : source code of the schoolbook multiplication of polynomials of degree up to 511 using AVX512 instruction set. For degree > 511, recursive Karatsuba is used.
 * **Karat256.c** : source code of the Karatsuba multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, recursive Karatsuba is used.
 * **Karat512.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction set and the multiplication 128x4 provided in DGK2.c. For degree > 511, recursive Karatsuba is used.
-* **Karat512_SB.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction using the schoolbook multiplication provided in SB512.c for degree < 128. For degree > 511, recursive Karatsuba is used.
+* **Karat512_SB.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction using the schoolbook multiplication provided in SB512.c for degree < 256. For degree > 511, recursive Karatsuba is used.
 * **DGK.c** : source code of the AVX512 multiplication of polynomials of degree up to 255 described in *"N. Drucker, S. Gueron, V. Krasnov, Fast Multiplication of binary polynomials with the forthcoming vectorized vpclmulqdq instruction, ARITH'25, 2018"*. For degree > 255, recursive Karatsuba is used.
 * **DGK2.c** : source code of the AVX512 multiplication of polynomials of degree up to 511 described in *"N. Drucker, S. Gueron, D. Kostic, Fast Polynomial Inversion for Post-Quantum QC-MDPC Cryptography, CSCML 2020, 2020"*. For degree > 511, recursive Karatsuba is used.
-* **AVX2.c** : source code of the schoolbook multiplication of polynomials of degree up to 127 using AVX2 instruction set. For degree > 255, Recursive Karatsuba is used.
+* **AVX2.c** : source code of the Karatsuba multiplication of polynomials using AVX2 instruction set and *pclmul* instruction. For degrees >= 127, recursive Karatsuba is used.
 * **KaratRec.c** : main program to measure the performances of the above multiplications.
 
 **Prerequisites**
