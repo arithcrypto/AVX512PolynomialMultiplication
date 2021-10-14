@@ -1,6 +1,4 @@
-This repository contains :
-
-* **AVX2** : patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2020/10/01. It concerns only hqc-128 and hqc-192.
+This repository contains patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2020/10/01. It concerns only hqc-128 and hqc-192.
 
 **How to apply patches ?**
 
@@ -12,14 +10,14 @@ unzip hqc-submission_2020-10-01.zip
 
 Copy the **Makefile**  from the appropriate patch folder into one of the HQC subfolder :
 ```console
-cp AVX2/Makefile Optimized_Implementation/hqc-size
+cp Makefile Optimized_Implementation/hqc-size
 ```
 where *size* is 128 or 192.
 
 Then copy the source codes from one of the patch subfolder into the corresponding **src** subfolder of HQC.
 
 ```console
-cp AVX2/hqc-size/* Optimized_Implementation/hqc-size/src/
+cp hqc-size/* Optimized_Implementation/hqc-size/src/
 ```
 where size is 128 or 192.
 

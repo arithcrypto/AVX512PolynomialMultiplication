@@ -2,7 +2,7 @@ This repository contains :
 
 * **hqc-submission_2020-10-01.zip** : official HQC update for the round 3 of the NIST standardization process 2020/10/01
 * **measure_official_release** : Makefile and C-source code to measure the performances of the HQC official release (Optimized_Implementation)
-* **patches_AVX2** : Patches to apply to the official release to apply new multiplication process for hqc-128 and hqc-192 (AVX2), and patches to obtain an AVX512 version of the HQC package.
+* **patches** : Patches to apply to the official release to apply new multiplication process for hqc-128 and hqc-192 (AVX2).
 
 **How to measure the performances of the official release ?**
 
@@ -35,4 +35,4 @@ where *size* is 128 or 192.
 
 **How to apply our patches ?**
 
-see README of **patches_AVX2** folder.
+see README of **patches** folder.
