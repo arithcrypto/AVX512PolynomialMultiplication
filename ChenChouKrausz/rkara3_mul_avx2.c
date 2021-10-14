@@ -736,7 +736,7 @@ int main()
 		timer += mini;
 	}
 	
-	printf("timer karat_mult3 12288     : %lu\n\n",timer/NSAMPLES);
+	printf("timer karat_mult3_12288     : %lu\n\n",timer/NSAMPLES);
 	
 	
 	timer=0;
@@ -792,7 +792,7 @@ int main()
 		timer += mini;
 	}
 	
-	printf("timer karat_mult3 24576     : %lu\n\n",timer/NSAMPLES);
+	printf("timer karat_mult3_24576     : %lu\n\n",timer/NSAMPLES);
 
 	timer=0;
 	for(int k=0; k<NSAMPLES;k++){
