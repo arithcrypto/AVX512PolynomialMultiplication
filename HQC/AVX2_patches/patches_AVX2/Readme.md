@@ -1,7 +1,6 @@
 This repository contains :
 
 * **AVX2** : patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2020/10/01. It concerns only hqc-128 and hqc-192.
-* **AVX512** : patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2020/10/01, to get an AVX512 version of HQC multiplication process.
 
 **How to apply patches ?**
 
@@ -13,16 +12,16 @@ unzip hqc-submission_2020-10-01.zip
 
 Copy the **Makefile**  from the appropriate patch folder into one of the HQC subfolder :
 ```console
-cp AVXversion/Makefile Optimized_Implementation/hqc-size
+cp AVX2/Makefile Optimized_Implementation/hqc-size
 ```
-where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
+where *size* is 128 or 192.
 
 Then copy the source codes from one of the patch subfolder into the corresponding **src** subfolder of HQC.
 
 ```console
-cp AVXversion/hqc-size/* Optimized_Implementation/hqc-size/src/
+cp AVX2/hqc-size/* Optimized_Implementation/hqc-size/src/
 ```
-where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
+where is 128 or 192.
 
 Do not forget to run the script **measure.sh** located at the top folder of this repository
 ```console
@@ -35,11 +34,6 @@ cd Optimized_Implementation/hqc-size/
 make bench
 bin/bench
 ```
-where *version* is 2 or 512 and *size* is 128, 192 (for AVX2 and AVX512) or 256 (for AVX512).
+where is 128 or 192.
 
-**WARNING** : to execute the AVX512 patches, you must have an AVX512 processor with the **VPCLMULQDQ** instruction. From a shell, just run : 
-```console
-grep vpclmulqdq /proc/cpuinfo
-```
-to see if this feature is available.
 
