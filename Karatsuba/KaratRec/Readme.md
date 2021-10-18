@@ -4,7 +4,7 @@ The folder KaratRec contains the following files:
 * **SB512.c** : source code of the schoolbook multiplication of polynomials of degree up to 511 using AVX512 instruction set. For degree > 511, recursive Karatsuba is used.
 * **Karat256.c** : source code of the Karatsuba multiplication of polynomials of degree up to 255 using AVX512 instruction set. For degree > 255, recursive Karatsuba is used.
 * **Karat512.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction set and the multiplication 128x4 provided in DGK2.c. For degree > 511, recursive Karatsuba is used.
-* **Karat512_SB.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction using the schoolbook multiplication provided in SB512.c for degree < 256. For degree > 511, recursive Karatsuba is used.
+* **Karat512_SB.c** : source code of the Karatsuba multiplication of polynomials of degree up to 511 using AVX512 instruction and the schoolbook multiplication provided in SB512.c. For degree > 511, recursive Karatsuba is used.
 * **DGK.c** : source code of the AVX512 multiplication of polynomials of degree up to 255 described in *"N. Drucker, S. Gueron, V. Krasnov, Fast Multiplication of binary polynomials with the forthcoming vectorized vpclmulqdq instruction, ARITH'25, 2018"*. For degree > 255, recursive Karatsuba is used.
 * **DGK2.c** : source code of the AVX512 multiplication of polynomials of degree up to 511 described in *"N. Drucker, S. Gueron, D. Kostic, Fast Polynomial Inversion for Post-Quantum QC-MDPC Cryptography, CSCML 2020, 2020"*. For degree > 511, recursive Karatsuba is used.
 * **AVX2.c** : source code of the Karatsuba multiplication of polynomials using AVX2 instruction set and *pclmul* instruction. For degrees >= 127, recursive Karatsuba is used.
@@ -43,4 +43,4 @@ Or run :
 make METHOD=1 bench
 ./KaratRec
 ```
-where METHOD is either **SB256**, **KARAT256**, **DGK**, or **AVX2** to get the performances of the selected method.
+where METHOD is either **SB256**, **SB512**, **KARAT256**, **KARAT512**, **KARAT512_SB**, **DGK**, **DGK2**, or **AVX2** to get the performances of the selected method.

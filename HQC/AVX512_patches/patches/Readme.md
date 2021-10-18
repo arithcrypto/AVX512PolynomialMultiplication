@@ -1,6 +1,4 @@
-This repository contains :
-
-* **AVX512** : patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2021/06/06.
+This repository contains patches to apply to the AVX2 Optimized Implementation of the official HQC update for the round 3 of the NIST standardization process 2021/06/06.
 
 **How to apply patches ?**
 

@@ -2,7 +2,7 @@ This repository contains :
 
 * **hqc-optimized-implementation_2021-06-06.zip** : official HQC update for the round 3 of the NIST standardization process 2021/06/06
 * **measure_official_release** : Makefile and C-source code to measure the performances of the HQC official release (Optimized_Implementation)
-* **patches_AVX512** : Patches to apply to the official release to apply new multiplication process for hqc-128, hqc-192, hqc-256 (AVX2), and patches to obtain an AVX512 version of the HQC package.
+* **patches_AVX512** : Patches fot the official release oh HQC to apply new multiplication process for hqc-128, hqc-192, hqc-256 to obtain an AVX512 version of the HQC package.
 
 **How to measure the performances of the official release ?**
 
